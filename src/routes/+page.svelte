@@ -1,157 +1,73 @@
-<script>
-  import { invoke } from "@tauri-apps/api/core";
+<div
+  class="max-w-md p-6 rounded-xl shadow-md border border-slate-700 bg-slate-900"
+>
+  <h2 class="text-xl font-bold text-slate-200 mb-6">Available Features</h2>
 
-  let name = $state("");
-  let greetMsg = $state("");
+  <div class="space-y-1">
+    <div
+      class="group relative flex gap-x-5 p-4 rounded-lg bg-indigo-50/10 hover:bg-indigo-50/20 transition-all cursor-pointer border-l-4 border-indigo-500"
+    >
+      <div
+        class="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-indigo-600 group-hover:scale-110 transition-transform"
+      >
+        <svg
+          class="h-6 w-6 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+          />
+        </svg>
+      </div>
+      <div>
+        <h3
+          class="font-semibold text-slate-200 group-hover:text-indigo-400 transition-colors"
+        >
+          Database Migrations
+        </h3>
+        <p class="mt-1 text-sm text-slate-400 leading-relaxed">
+          Automate schema changes and version control for your database.
+        </p>
+      </div>
+    </div>
 
-  // @ts-ignore
-  async function greet(event) {
-    event.preventDefault();
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    greetMsg = await invoke("greet", { name });
-  }
-</script>
+    <div class="ml-9 h-4 border-l-2 border-slate-700"></div>
 
-<main class="container">
-  <h1>Welcome to Tauri + Svelte</h1>
-
-  <div class="row">
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo vite" alt="Vite Logo" />
-    </a>
-    <a href="https://tauri.app" target="_blank">
-      <img src="/tauri.svg" class="logo tauri" alt="Tauri Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank">
-      <img src="/svelte.svg" class="logo svelte-kit" alt="SvelteKit Logo" />
-    </a>
+    <div
+      class="group relative flex gap-x-5 p-4 rounded-lg hover:bg-slate-800 transition-all cursor-pointer border-l-4 border-transparent hover:border-indigo-500"
+    >
+      <div
+        class="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-slate-800 group-hover:bg-indigo-600 transition-colors border border-slate-700"
+      >
+        <svg
+          class="h-6 w-6 text-slate-400 group-hover:text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
+        </svg>
+      </div>
+      <div>
+        <h3
+          class="font-semibold text-slate-200 group-hover:text-indigo-400 transition-colors"
+        >
+          Full CRUD Feature
+        </h3>
+        <p class="mt-1 text-sm text-slate-400 leading-relaxed">
+          Generate Create, Read, Update, and Delete operations instantly.
+        </p>
+      </div>
+    </div>
   </div>
-  <p>Click on the Tauri, Vite, and SvelteKit logos to learn more.</p>
-
-  <form class="row" onsubmit={greet}>
-    <input id="greet-input" placeholder="Enter a name..." bind:value={name} />
-    <button type="submit">Greet</button>
-  </form>
-  <p>{greetMsg}</p>
-</main>
-
-<style>
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
-}
-
-.logo.svelte-kit:hover {
-  filter: drop-shadow(0 0 2em #ff3e00);
-}
-
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color: #0f0f0f;
-  background-color: #f6f6f6;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-.container {
-  margin: 0;
-  padding-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: 0.75s;
-}
-
-.logo.tauri:hover {
-  filter: drop-shadow(0 0 2em #24c8db);
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
-h1 {
-  text-align: center;
-}
-
-input,
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  color: #0f0f0f;
-  background-color: #ffffff;
-  transition: border-color 0.25s;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-button {
-  cursor: pointer;
-}
-
-button:hover {
-  border-color: #396cd8;
-}
-button:active {
-  border-color: #396cd8;
-  background-color: #e8e8e8;
-}
-
-input,
-button {
-  outline: none;
-}
-
-#greet-input {
-  margin-right: 5px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #f6f6f6;
-    background-color: #2f2f2f;
-  }
-
-  a:hover {
-    color: #24c8db;
-  }
-
-  input,
-  button {
-    color: #ffffff;
-    background-color: #0f0f0f98;
-  }
-  button:active {
-    background-color: #0f0f0f69;
-  }
-}
-
-</style>
+</div>

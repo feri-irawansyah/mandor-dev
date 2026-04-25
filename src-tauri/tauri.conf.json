@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "mandor-dev",
+        "title": "Mandor Dev",
         "width": 800,
         "height": 600
       }

@@ -3,6 +3,7 @@ use crate::handlers::frontend_handler::ProcessState;
 mod handlers {
     pub mod backend_handler;
     pub mod frontend_handler;
+    pub mod git_handler;
     pub mod migration_handler;
     pub mod project_handler;
 }
@@ -37,7 +38,11 @@ pub fn run() {
             handlers::frontend_handler::check_frontend_status,
             handlers::backend_handler::run_backend,
             handlers::backend_handler::stop_backend,
-            handlers::backend_handler::check_backend_status
+            handlers::backend_handler::check_backend_status,
+            handlers::git_handler::get_git_branch,
+            handlers::git_handler::get_git_branches,
+            handlers::git_handler::git_fetch,
+            handlers::git_handler::git_checkout,
         ])
         .manage(ProcessState {
             frontend: std::sync::Mutex::new(None),

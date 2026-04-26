@@ -46,6 +46,7 @@
             {/if}
 
             {#each node.children as child}
+                <!-- svelte-ignore svelte_self_deprecated -->
                 <svelte:self node={child} />
             {/each}
         </div>

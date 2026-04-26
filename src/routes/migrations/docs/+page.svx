@@ -1,0 +1,7 @@
+<article class="prose prose-invert">
+    <h2>Panduan Migrations</h2>
+    <p>
+        Migrations ini buat bikin file schema fluent migrations fitur yang
+        tersedia ada beberapa.
+    </p>
+</article>

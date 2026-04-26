@@ -31,3 +31,22 @@ pub fn save_last_project(app: &AppHandle, path: &str) -> Result<(), String> {
 
     save_config(app, &config)
 }
+
+pub fn strip_ansi(text: &str) -> String {
+    let mut result = String::new();
+    let mut chars = text.chars().peekable();
+
+    while let Some(c) = chars.next() {
+        if c == '\u{1b}' {
+            while let Some(n) = chars.next() {
+                if n == 'm' || n == 'K' {
+                    break;
+                }
+            }
+        } else {
+            result.push(c);
+        }
+    }
+
+    result
+}

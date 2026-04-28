@@ -1,5 +1,6 @@
 use std::{
     io::{BufRead, BufReader},
+    os::windows::process::CommandExt,
     process::{Command, Stdio},
 };
 
@@ -24,6 +25,7 @@ pub fn run_backend(
         .current_dir(project_path)
         .stdout(Stdio::piped())
         .stderr(Stdio::piped())
+        .creation_flags(0x08000000)
         .spawn()
         .map_err(|e| e.to_string())?;
 

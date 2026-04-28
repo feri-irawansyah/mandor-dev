@@ -1,4 +1,6 @@
-use std::{fs, path::PathBuf, process::Command, time::SystemTime};
+use std::{
+    fs, os::windows::process::CommandExt, path::PathBuf, process::Command, time::SystemTime,
+};
 
 pub fn find_latest_migration(project_path: &str, name: &str) -> Option<PathBuf> {
     let dir = PathBuf::from(project_path)
@@ -42,6 +44,7 @@ pub fn run_pwsh(
             "-Command",
             &ps_command,
         ])
+        .creation_flags(0x08000000)
         .output()
         .map_err(|e| e.to_string())?;
 

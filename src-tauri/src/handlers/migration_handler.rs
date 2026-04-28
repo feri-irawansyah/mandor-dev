@@ -1,4 +1,4 @@
-use std::process::Command;
+use std::{os::windows::process::CommandExt, process::Command};
 
 use crate::services::migration_service::{find_latest_migration, run_pwsh};
 
@@ -39,6 +39,7 @@ pub fn run_add_migration(
             "-Command",
             &ps_command,
         ])
+        .creation_flags(0x08000000)
         .output()
         .map_err(|e| e.to_string())?;
 
@@ -93,6 +94,7 @@ pub fn run_show_migration(project_path: String, tags: Vec<String>) -> Result<Str
             "-Command",
             &ps_command,
         ])
+        .creation_flags(0x08000000)
         .output()
         .map_err(|e| e.to_string())?;
 
